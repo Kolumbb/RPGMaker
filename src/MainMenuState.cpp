@@ -7,8 +7,9 @@
 //Initializers
 
 auto MainMenuState::initBackground() -> void {
-	auto path = std::filesystem::path("..\\..\\..\\..\\Resources\\mainMenu\\background.png");
-	if (!this->texture.loadFromFile(path.string())) {
+	auto file = std::filesystem::path("..\\..\\..\\..\\Resources\\mainMenu\\background.png");
+
+	if (!this->texture.loadFromFile(file.string())) {
 		MessageBox(HWND(), "Sorry, we couldn't find one of your main menu assets, please check the file location", "Error", MB_ICONWARNING);
 		this->shape.setFillColor(sf::Color::Red);
 	} 
@@ -17,19 +18,17 @@ auto MainMenuState::initBackground() -> void {
 }
 
 auto MainMenuState::initKeyBinds()-> void {
-	auto path = std::filesystem::path("..\\..\\..\\..\\Resources\\config\\key_binds_mainmenustate.ini");
-	std::ifstream ifs(path);
-	if (ifs.is_open()) {
+	auto file = std::fstream("..\\..\\..\\..\\Resources\\config\\key_binds_mainmenustate.ini");
+	if (file) {
 		auto key = std::string();
 		auto key_value = std::string();
 		
-		while (ifs >> key >> key_value) {
+		while (file >> key >> key_value) {
 			this->keyBinds[key] = this->stateData->supportedKeys->at(key_value);
 		}
-		ifs.close();
 	}
 	else MessageBox(HWND(), "Sorry, we couldn't find your supported keys configuration, please check the file location", "Error", MB_ICONWARNING);
-	ifs.close();
+	file.close();
 	for (auto& it : this->keyBinds) std::cout << it.first << " " << it.second << std::endl;
 }
 

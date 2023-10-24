@@ -12,19 +12,18 @@ auto GameState::initBackground() -> void {
 }
 
 auto GameState::initKeyBinds() -> void {
-	auto path = std::filesystem::path("..\\..\\..\\..\\Resources\\Config\\key_binds_gamestate.ini");
-	std::ifstream ifs(path);
-	if (ifs.is_open()) {
+	auto file = std::fstream("..\\..\\..\\..\\Resources\\Config\\key_binds_gamestate.ini");
+	
+	if (file) {
 		auto key = std::string();
 		auto key_value = std::string();
 
-		while (ifs >> key >> key_value) {
+		while (file >> key >> key_value) {
 			this->keyBinds[key] = this->stateData->supportedKeys->at(key_value);
 		}
-		ifs.close();
 	}
 	else MessageBox(HWND(), "Sorry, we couldn't find your supported keys configuration, please check the file location", "Error", MB_ICONWARNING);
-	ifs.close();
+	file.close();
 	for (auto& it : this->keyBinds) std::cout << it.first << " " << it.second << std::endl;
 }
 

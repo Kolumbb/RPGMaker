@@ -16,15 +16,15 @@ auto Game::initSupportedKeys() -> void{
 
 
 	//Filling supportedKeys map with pairs from file
-	auto path = std::filesystem::path("..\\..\\..\\..\\Resources\\Config\\supported_keys.ini");
-	std::ifstream ifs(path);
-	if (ifs.good()) {
-		while (ifs >> key >> key_value)
+	auto file = std::fstream("..\\..\\..\\..\\Resources\\Config\\supported_keys.ini");
+	
+	if (file) {
+		while (file >> key >> key_value)
 			this->stateData.supportedKeys->emplace(std::pair<std::string, int>(key, key_value));
 	}
 	else MessageBox(HWND(), "Sorry, we couldn't find your supported keys configuration, please check the file location", "Error", MB_ICONWARNING);
 
-	ifs.close();
+	file.close();
 
 }
 
