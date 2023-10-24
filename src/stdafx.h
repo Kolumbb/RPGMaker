@@ -25,7 +25,7 @@
 #include <filesystem>
 
 //Windows
-#include "Windows.h"
+#include "windows.h"
 
 //Own Structures
 class State;
