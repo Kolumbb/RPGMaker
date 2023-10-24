@@ -3,8 +3,11 @@
 
 auto SettingsState::initBackground() -> void {
 	auto path = std::filesystem::path("..\\..\\..\\..\\Resources\\mainMenu\\background.png");
+
+	assert(!path.empty());
+
+
 	if (!this->texture.loadFromFile(path.string())) {
-		MessageBox(HWND(), "Sorry, we couldn't find one of your main menu assets, please check the file location", "Error", MB_ICONWARNING);
 		this->shape.setFillColor(sf::Color::Red);
 	}
 	this->shape.setTexture(&this->texture);
@@ -13,6 +16,9 @@ auto SettingsState::initBackground() -> void {
 
 auto SettingsState::initKeyBinds() -> void {
 	auto file = std::fstream("..\\..\\..\\..\\Resources\\config\\key_binds.settingsState.ini");
+	
+	assert(file);
+
 	if (file) {
 		auto key = std::string();
 		auto key_value = std::string();
@@ -20,9 +26,8 @@ auto SettingsState::initKeyBinds() -> void {
 			this->keyBinds[key] = this->stateData->supportedKeys->at(key_value);
 		}
 	}
-	else MessageBox(HWND(), "Sorry, we couldn't find your supported keys configuration, please check the file location", "Error", MB_ICONWARNING);
 	file.close();
-	for (auto& it : this->keyBinds) std::cout << it.first << " " << it.second << std::endl;
+	//for (auto& it : this->keyBinds) std::cout << it.first << " " << it.second << std::endl;
 }
 
 auto SettingsState::initButtons() -> void {

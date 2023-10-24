@@ -18,12 +18,12 @@ auto Game::initSupportedKeys() -> void{
 	//Filling supportedKeys map with pairs from file
 	auto file = std::fstream("..\\..\\..\\..\\Resources\\Config\\supported_keys.ini");
 	
+	assert(file);
+	
 	if (file) {
 		while (file >> key >> key_value)
 			this->stateData.supportedKeys->emplace(std::pair<std::string, int>(key, key_value));
 	}
-	else MessageBox(HWND(), "Sorry, we couldn't find your supported keys configuration, please check the file location", "Error", MB_ICONWARNING);
-
 	file.close();
 
 }
@@ -36,15 +36,17 @@ auto Game::initStateData() -> void{
 
 auto Game::initGfxSettings() ->void{
 	auto path = std::filesystem::path("..\\..\\..\\..\\Resources\\Config\\display_settings.ini");
+
+	assert(!path.empty());
 	this->stateData.gfxSettings.loadFromFile(path);
 
 }
 
 auto Game::initFont() -> void{
 	auto path = std::filesystem::path("..\\..\\..\\..\\Resources\\Fonts\\OpenSans-Regular.ttf");
-	if (!this->stateData.font.loadFromFile(path.string())) {
-		MessageBox(HWND(), "Sorry, we couldn't find your font configuration, please check the file location", "Error", MB_ICONWARNING);
-	}
+
+	assert(!path.empty());
+	this->stateData.font.loadFromFile(path.string());
 		
 }
 

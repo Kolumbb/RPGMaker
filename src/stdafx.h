@@ -23,9 +23,8 @@
 #include <map>
 #include <cmath>
 #include <filesystem>
-
-//Windows
-#include <windows.h>
+#include <assert.h>
+#define NDEBUG
 
 //Own Structures
 class State;

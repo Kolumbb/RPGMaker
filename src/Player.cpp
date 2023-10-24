@@ -19,10 +19,9 @@ void Player::initMovementComponent(){
 
 Player::Player(float pos_x, float pos_y, std::map<std::string, int>& key_binds): Entity(pos_x, pos_y), keyBinds(key_binds){
 	auto path = std::filesystem::path("..\\..\\..\\..\\Resources\\gameState\\warrior-all-animations-from top to bottom(Idle-run-full combo attack with 3 swings-single swing 1-single swing 3-hurt-death)-canvas 144x96.png");
-	auto pathToString = std::string(path.string());
-	//asdasd
-	if(! this->textureSheet.loadFromFile(pathToString))
-		MessageBox(HWND(), "Sorry, we couldn't find your texture sheet, please check the file location", "Error", MB_ICONWARNING);
+	
+	assert(!path.empty());
+	this->textureSheet.loadFromFile(path.string());
 	this->sprite.setTexture(this->textureSheet);
 	this->initStartRect();
 	this->initMovementComponent();
