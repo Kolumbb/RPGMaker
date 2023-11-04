@@ -1,5 +1,5 @@
-#include "stdafx.h"
-#include "Entity.h"
+#include "stdafx.hpp"
+#include "Entity.hpp"
 
 Entity::Entity(float pos_x, float pos_y){
 	this->position = sf::Vector2f(pos_x, pos_y);

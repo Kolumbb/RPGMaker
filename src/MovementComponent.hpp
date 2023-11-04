@@ -21,6 +21,6 @@ public:
 	~MovementComponent();
 
 	//Update methods
-	 auto update(const float& dt, Direction dir = IDLE) -> sf::Vector2f const;
+	 auto update(const float& dt, Direction dir = Direction::IDLE) -> sf::Vector2f const;
 };
 

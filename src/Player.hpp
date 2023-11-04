@@ -1,6 +1,6 @@
 #pragma once
-#include "Entity.h"
-#include "MovementComponent.h"
+#include "Entity.hpp"
+#include "MovementComponent.hpp"
 
 class Player :
     public Entity {

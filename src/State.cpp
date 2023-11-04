@@ -1,5 +1,5 @@
-#include "stdafx.h"
-#include "State.h"
+#include "stdafx.hpp"
+#include "State.hpp"
 
 //Private methods
 

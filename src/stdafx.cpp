@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "stdafx.hpp"
 
 auto isAnyKeyPressed() -> bool{
 	for (int k = -1; k < sf::Keyboard::KeyCount; ++k)

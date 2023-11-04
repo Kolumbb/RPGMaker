@@ -1,5 +1,5 @@
-#include "stdafx.h"
-#include "GameState.h"
+#include "stdafx.hpp"
+#include "GameState.hpp"
 
 
 //Private methods

@@ -1,5 +1,5 @@
-#include "stdafx.h"
-#include "MainMenuState.h"
+#include "stdafx.hpp"
+#include "MainMenuState.hpp"
 
 
 

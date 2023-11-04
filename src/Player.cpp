@@ -1,5 +1,5 @@
-#include "stdafx.h"
-#include "Player.h"
+#include "stdafx.hpp"
+#include "Player.hpp"
 
 void Player::initStartRect(){
 	this->startRect = sf::IntRect(0, 0, 144, 96);
@@ -40,19 +40,19 @@ void Player::update(const float& dt, const sf::Vector2f& mouse_position){
 
 void Player::updateUserInput(const float& dt){
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds["MOVE_RIGHT"]))) {
-		this->velocity = this->movementComponent->update(dt, this->direction = RIGHT);
+		this->velocity = this->movementComponent->update(dt, this->direction = Direction::RIGHT);
 		this->sprite.move(this->velocity);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds["MOVE_LEFT"]))){
-		this->velocity = this->movementComponent->update(dt, this->direction = LEFT);
+		this->velocity = this->movementComponent->update(dt, this->direction = Direction::LEFT);
 		this->sprite.move(this->velocity);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds["MOVE_UP"]))) {
-		this->velocity = this->movementComponent->update(dt, this->direction = UP);
+		this->velocity = this->movementComponent->update(dt, this->direction = Direction::UP);
 		this->sprite.move(this->velocity);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds["MOVE_DOWN"]))) {
-		this->velocity = this->movementComponent->update(dt, this->direction = DOWN);
+		this->velocity = this->movementComponent->update(dt, this->direction = Direction::DOWN);
 		this->sprite.move(this->velocity);
 	}
 	if (isAnyKeyPressed() == false) {

@@ -1,6 +1,6 @@
 #pragma once
-#include "Gui.h"
-#include "StateData.h"
+#include "Gui.hpp"
+#include "StateData.hpp"
 
 
 

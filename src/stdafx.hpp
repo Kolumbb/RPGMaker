@@ -32,5 +32,5 @@ class StateData;
 class GFXSettings;
 
 typedef unsigned short u_short;
-enum Direction { IDLE = 0, LEFT, RIGHT, UP, DOWN };
+enum class Direction { IDLE = 0, LEFT, RIGHT, UP, DOWN };
 bool isAnyKeyPressed();

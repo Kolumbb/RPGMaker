@@ -1,11 +1,6 @@
 #pragma once
-
-#include "State.h"
-#include "GameState.h"
-#include "SettingsState.h"
-
-
-class MainMenuState :
+#include "State.hpp"
+class SettingsState :
     public State{
 
 private:
@@ -34,8 +29,7 @@ protected:
 
 public:
 
-    MainMenuState(StateData* state_data);
-    ~MainMenuState();
-
+    SettingsState(StateData* state_data);
+    ~SettingsState();
 };
 

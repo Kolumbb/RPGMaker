@@ -1,8 +1,8 @@
 #pragma once
 
-#include "GameState.h"
-#include "MainMenuState.h"
-#include "StateData.h"
+#include "GameState.hpp"
+#include "MainMenuState.hpp"
+#include "StateData.hpp"
 
 
 class Game

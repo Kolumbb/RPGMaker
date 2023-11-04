@@ -1,5 +1,5 @@
-#include "stdafx.h"
-#include "SettingsState.h"
+#include "stdafx.hpp"
+#include "SettingsState.hpp"
 
 auto SettingsState::initBackground() -> void {
 	auto path = std::filesystem::path("..\\..\\..\\..\\Resources\\mainMenu\\background.png");
