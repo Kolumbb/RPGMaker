@@ -19,7 +19,7 @@ add_executable(
 )
 
 
-target_precompile_headers(AncientTimes PRIVATE src/stdafx.h)
+target_precompile_headers(AncientTimes PRIVATE src/stdafx.hpp)
 target_link_libraries(AncientTimes PRIVATE sfml-system)
 target_link_libraries(AncientTimes PRIVATE sfml-audio)
 target_link_libraries(AncientTimes PRIVATE sfml-network)
