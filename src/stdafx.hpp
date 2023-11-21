@@ -33,4 +33,5 @@ class GFXSettings;
 
 typedef unsigned short u_short;
 enum class Direction { IDLE = 0, LEFT, RIGHT, UP, DOWN };
+enum class Destination {MAINMENU, GAME, SETTINGS};
 bool isAnyKeyPressed();

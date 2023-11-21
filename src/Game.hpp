@@ -1,42 +1,28 @@
 #pragma once
 
-#include "GameState.hpp"
-#include "MainMenuState.hpp"
+#include "stdafx.hpp"
 #include "StateData.hpp"
+#include "states/GameState.hpp"
+#include "states/MainMenuState.hpp"
 
-
-class Game
-{
+class Game{
 private:
 	//Variables & Resources
+	bool quit;
 	sf::Clock clock;
 	sf::Event event;
 	float dt;
-	bool running;
 	sf::Vector2f mousePosition;
-	std::unique_ptr<sf::RenderWindow> window;
-
 	StateData stateData;
 
-	
-
-	bool quit;
-	
-	
 	//Private methods
-	auto getQuit() -> bool const;
-	//Initializers
-	auto initWindow() -> void;
-	auto initSupportedKeys() -> void;
-	auto initStates() -> void;
-	auto initStateData() -> void;
-	auto initGfxSettings() -> void;
-	auto initFont() -> void;
+	auto getQuit() -> const bool const;
 	
 	//Update methods
 	auto update(const float& dt, const sf::Vector2f& mouse_position) -> void;
 	auto updateEvents() -> void;
 	auto updateDt() -> void;
+	auto initStates() -> void;
 	
 	//Render methods
 	auto render(sf::RenderTarget* target = nullptr) -> void;
@@ -45,7 +31,7 @@ protected:
 public:
 	//Constructors & Destructors
 	Game();
-	~Game();
+	~Game() = default;
 
 	//Public methods
 	auto run() ->void;

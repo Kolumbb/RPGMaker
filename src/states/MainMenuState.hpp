@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../stdafx.hpp"
 #include "State.hpp"
 #include "GameState.hpp"
 #include "SettingsState.hpp"
@@ -10,21 +10,19 @@ class MainMenuState :
 
 private:
     //Variables & Resources
-    sf::Texture texture;
     sf::RectangleShape shape;
     std::map<std::string, gui::Button*> buttons;
     //Private functions
 
     //Initializers
-    auto initBackground() -> void;
-    auto initKeyBinds() -> void;
+    auto initBackground(std::filesystem::path path) -> void;
+    auto initKeyBinds(std::filesystem::path path) -> void;
     auto initButtons() -> void;
 
 
     //Update methods
     auto update(const float& dt, const sf::Vector2f& mouse_position) -> void;
     auto updateButtons(const float& dt, const sf::Vector2f& mouse_position) -> void;
-    auto updateKeyBindsInput(const float& dt) -> void;
 
     //Render methods
     auto render(sf::RenderTarget& target) -> void;
@@ -34,7 +32,7 @@ protected:
 
 public:
 
-    MainMenuState(StateData* state_data);
+    MainMenuState(StateData& state_data);
     ~MainMenuState();
 
 };

@@ -1,33 +1,34 @@
 #pragma once
+#include "../stdafx.hpp"
+#include "MainMenuState.hpp"
+#include "../gui/PauseMenu.hpp"
+#include "../entities/Player.hpp"
 
-#include "State.hpp"
-#include"MainMenuState.hpp"
-#include "Player.hpp"
 
 
 class GameState :
     public State{
 private:
     //Variables & Resources
-    gui::PauseMenu* pMenu;
-    bool paused;
-    sf::RectangleShape shape;
-    Player* player;
-    //Private functions
-    
-    //Initializers
-    auto initBackground() -> void;
-    auto initKeyBinds() -> void;
-    auto initPlayer() -> void;
-    auto initPausedMenu() -> void;
+
+    std::unique_ptr <PauseMenu> pMenu;
+    std::unique_ptr<Player> player;
 
     //Accessors & Modifiers
-    auto getPaused() -> bool;
-    auto setPaused(bool yn) -> void;
+
+    
+    //Initializers
+    auto initKeyBinds(std::filesystem::path path) -> void;
+    auto initPlayer(float pos_x, float pos_y);
+    auto initPausedMenu() -> void;
+    auto makeFullScreen() -> void;
+
+
     
     //Update methods
     auto update(const float& dt, const sf::Vector2f& mouse_position) -> void;
     auto updatePaused(const float& dt, const sf::Vector2f& mouse_position) -> void;
+    auto updateUserInput(const float& dt, const sf::Vector2f& mouse_position) -> void;
     auto updateUnPaused(const float& dt, const sf::Vector2f& mouse_position) -> void;
     auto updateKeyBindsInput(const float& dt) -> void;
 
@@ -40,8 +41,8 @@ protected:
 
 public:
 
-    GameState(StateData* state_data);
-    ~GameState();
+    GameState(StateData& state_data);
+    ~GameState() = default;
 
 };
 

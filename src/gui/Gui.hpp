@@ -1,12 +1,12 @@
 #pragma once
-#include "StateData.hpp"
 
+#include "../stdafx.hpp"
 
 namespace gui {
 	enum ButtonState { IDLE = 0, HOVER, PRESSED };
 	class Button {
 	private:
-		
+
 		//Variables & Resources
 		sf::Text text;
 		ButtonState btnState;
@@ -44,7 +44,7 @@ namespace gui {
 
 	public:
 
-		auto isPressed() -> bool const;
+		auto isPressed() const -> bool const;
 
 		//Constructors & Destructors
 		Button(float pos_x, float pos_y, float _width, float _height,
@@ -56,47 +56,14 @@ namespace gui {
 		~Button();
 		//Methods
 		auto update(const float& dt, const sf::Vector2f& mouse_position) -> void;
-		auto render(sf::RenderTarget& target) -> void;
+		auto render(sf::RenderTarget& target) const -> void const;
 
 	};
+
 	class DropDownList {
 
 	};
-	class PauseMenu {
-	private:
-		//Variables & Resources
-		std::stack<State*>& states;
-		sf::RectangleShape transparentBackground;
-		sf::RectangleShape background;
-		sf::Text text;
-		sf::Font font;
-		std::map<std::string, gui::Button*> buttons;
 
-		//Initializers
-		auto initText(const StateData* state_data) -> void;
-		auto initBackground(const StateData* state_data) -> void;
-		auto initButtons(const StateData* state_data, u_short buttons_width, u_short) -> void;
-		auto updateButtons(const float& dt, const sf::Vector2f& mouse_position) -> void;
-
-	protected:
-	public:
-		bool& paused;
-		//Constructors & Destructors
-		PauseMenu(const StateData* state_data, u_short buttons_widthshort, u_short character_size, bool& _paused);
-		~PauseMenu();
-
-		//Public methods
-
-		//Modifiers
-		//Update methods
-		auto update(const float& dt, const sf::Vector2f& mouse_position) -> void;
-
-		//Render methods
-		auto render(sf::RenderTarget& target) -> void;
-		auto renderBackground(sf::RenderTarget& target) -> void;
-		auto renderButtons(sf::RenderTarget& target) -> void;
-
-	};
 }
 
 

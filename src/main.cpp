@@ -4,7 +4,7 @@
 
 
 auto main() -> int {
-    Game game;
-    game.run();
+   auto game = std::make_unique<Game>();
+   game->run();
 
 }
